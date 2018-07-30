@@ -24,13 +24,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! class_exists( 'WPS\Widgets\WP_Widget' ) ) {
+if ( ! class_exists( 'WPS\Widgets\Widget' ) ) {
 	/**
 	 * Class WP_Widget.
 	 *
 	 * @package WPS\Widgets
 	 */
-	abstract class WP_Widget extends \WP_Widget {
+	abstract class Widget extends \WP_Widget {
 
 		/**
 		 * Holds widget settings defaults, populated in constructor.
