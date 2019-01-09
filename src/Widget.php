@@ -52,7 +52,7 @@ if ( ! class_exists( 'WPS\Widgets\Widget' ) ) {
 		 */
 		public function __construct( $id_base, $name, $widget_options = array(), $control_options = array() ) {
 
-			add_action( 'admin_print_footer_scripts', array( __CLASS__, 'admin_footer_script' ) );
+			add_action( 'admin_print_footer_scripts', array( __CLASS__, 'widget_save_inline_js' ) );
 
 			$this->defaults = $this->get_defaults();
 
@@ -70,14 +70,12 @@ if ( ! class_exists( 'WPS\Widgets\Widget' ) ) {
 		/**
 		 * Outputs an inline admin script.
 		 */
-		public static function admin_footer_script() {
+		public static function widget_save_inline_js() {
 			if ( ! self::is_widgets_page() ) {
 				return;
 			}
 
-			$js = '(function($){if (typeof wpsWidgetSave !== \'function\'){window.wpsWidgetSave = function(t){wpWidgets.save($(t).closest(\'div.widget\'), 0, 1, 0);}}})(jQuery);';
-			wp_add_inline_script( 'jquery', $js );
-			wp_enqueue_script( 'jquery' );
+			echo '<script>(function($){if(typeof wpsWidgetSave!==\'function\'){window.wpsWidgetSave=function(t){wpWidgets.save($(t).closest(\'div.widget\'),0,1,0);}}})(jQuery);</script>';
 		}
 
 		/**
