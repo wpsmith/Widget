@@ -19,11 +19,12 @@
     "issues": "https://github.com/wpsmith/Widget/issues"
   },
   "require": {
-    "php": ">=5.2.4"
+    "php": ">=5.6.0",
+    "wpsmith/singleton": "^1.0.0"
   },
   "autoload": {
     "psr-4": {
-      "WPS\\Widgets\\": "src/"
+      "WPS\\WP\\Widgets\\": "src/"
     }
   }
 }
